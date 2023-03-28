@@ -10,12 +10,11 @@ window.addEventListener("load", function() {
 });
 
 
-
-
+//TO-DO: Volume update not working
 // Update Volume Information
 function updateVolume() {
 	const volumeDisplay = document.getElementById("volume");
-	volumeDisplay.textContent = `${Math.round(videoPlayer.volume * 100)}%`;
+	volumeDisplay.innerText = `${Math.round(videoPlayer.volume * 100)}%`;
 }
 
 document.querySelector("#play").addEventListener("click", function() {
@@ -35,7 +34,7 @@ document.getElementById("pause").addEventListener("click", function() {
 document.getElementById("slower").addEventListener("click", function() {
 	console.log("Slow Video");
 	videoPlayer.playbackRate -= 0.1;
-  	console.log(`New speed: ${videoPlayer.playbackRate}`);
+  console.log(`New speed: ${videoPlayer.playbackRate}`);
 });
 
 // Speed Up
@@ -54,18 +53,20 @@ document.getElementById('skip').addEventListener("click", function() {
 });
 
 // Mute Button
-document.getElementById('mute').addEventListener("click", function() {
+muteButton = document.getElementById('mute')
+muteButton.addEventListener("click", function() {
   if (videoPlayer.muted) {
     videoPlayer.muted = false;
-    muteButton.textContent = 'Mute';
+    muteButton.innerText = 'Mute';
   } else {
     videoPlayer.muted = true;
-    muteButton.textContent = 'Unmute';
+    muteButton.innerText = 'Unmute';
   }
 });
 
 // Volume Slider
-document.getElementById("slider").addEventListener("input", function() {
+volumeSlider = document.getElementById("slider")
+volumeSlider.addEventListener("input", function() {
   videoPlayer.volume = volumeSlider.value / 100;
   updateVolume();
 });
